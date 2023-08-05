@@ -1,0 +1,19 @@
+[{
+    "id": "1",
+    "title": "Lapeli",
+    "year": "2020",
+    "director": "El Belloni",
+    "duration": 180,
+    "genre": ["Drama", "name"],
+    "rate": 9.3
+},
+{
+    "id": "2",
+    "title": "La movie",
+    "year": "2023",
+    "director": "Che Copete",
+    "duration": 200,
+    "genre": ["Drama", "Comedia"],
+    "rate": 8.7
+}
+]
