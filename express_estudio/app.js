@@ -8,10 +8,24 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var moviesRouter = require('./routes/movies');
-
+const mongoose = require('mongoose');
 
 
 var app = express();
+
+const mongoURI = 'mongodb://localhost:3000/Cluster0';
+
+// Connect to MongoDB
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((err) => {
+    console.error('Error connecting to MongoDB:', err);
+  });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
