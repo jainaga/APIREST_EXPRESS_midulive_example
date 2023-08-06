@@ -28,7 +28,7 @@ Content-Type: application/json
 
 {
 "title": "La guerra de las galaxias",
-"year": 19779,
+"year": 1977,
 "director": "George Lucas",
 "duration": 121,
 "genre": ["Sci-Fi"]

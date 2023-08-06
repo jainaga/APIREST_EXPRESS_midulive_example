@@ -9,9 +9,16 @@ const { validateMovie, partialvalidateMovie } = require('../schemas/movies.js');
 //     res.send('hola que hace')
 // })
 
+const ACEPPTED_ORIGINS = ['http://localhost:3001, http://localhost:8000'];
+
+
+
 router.get('/', (req, res) => {
-    const { genre } = req.query;
-    const { title } = req.query;
+    const { genre, title } = req.query;
+    const origin = req.header('origin');
+    if (ACEPPTED_ORIGINS.includes(origin) || !origin) {
+      res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    }
     if (genre) {
       const filteredMovies = movies.filter(
         movie => movie.genre.some(g => g.toLowerCase() === genre.toLowerCase()));
