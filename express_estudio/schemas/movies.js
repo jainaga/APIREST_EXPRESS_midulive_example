@@ -1,4 +1,5 @@
 const z = require('zod');
+const mongoose = require('mongoose');
 
 const movieSchema = z.object({
     title: z.string(),
@@ -14,6 +15,9 @@ const movieSchema = z.object({
     rate: z.number().min(0).max(10).default(0)
 })
 
+//const movie = mongoose.model('Movie', movieSchema);
+
+
 function validateMovie(object) {
     return movieSchema.safeParse(object) //usa el schema para validar el objeto
 }
@@ -21,5 +25,7 @@ function validateMovie(object) {
 function partialvalidateMovie(object) {
     return movieSchema.partial().safeParse(object) //usa el schema para validar el objeto
 }
+
+
 
 module.exports = {validateMovie, partialvalidateMovie}; // esto es para exportar la funcion validateMovie

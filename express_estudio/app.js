@@ -9,23 +9,31 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var moviesRouter = require('./routes/movies');
 const mongoose = require('mongoose');
+const usuariosRouter = require('./routes/usuarios.js');
 
 
 var app = express();
 
-const mongoURI = 'mongodb://localhost:3000/Cluster0';
 
-// Connect to MongoDB
-mongoose.connect(mongoURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+// Conectar a la base de datos de MongoDB
+const dbURL = 'mongodb://localhost:27017';
+mongoose
+  .connect(dbURL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
-    console.log('Connected to MongoDB');
+    console.log('Conexión exitosa a la base de datos.');
   })
   .catch((err) => {
-    console.error('Error connecting to MongoDB:', err);
+    console.error('Error al conectar a la base de datos:', err);
   });
+
+// Resto de la configuración y rutas de tu aplicación Express
+// ...
+
+
+// Inicia el servidor
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -46,6 +54,8 @@ app.use('/users', usersRouter);
 
 app.use('/movies', moviesRouter);
 app.use('/movies/:id', moviesRouter);
+
+app.use('/usuarios', usuariosRouter);
 
 
 // catch 404 and forward to error handler
